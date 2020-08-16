@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6f7a7050-3d33-42d5-8934-0b6488c1d038" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Android" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="F:\maven\repository" />
+        <option name="mavenHome" value="F:/maven/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="F:\maven\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="vmOptions" value="-Dmaven.multiModuleProjectDirectory=$M2_HOME" />
+  </component>
+  <component name="ProjectId" id="1YIyExEZTiFZqV0fTrCsNK1VgOR" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AndriodServer/src/main/resources/mapper" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.20454545" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\毕设\Android\AndriodServer\src\main\resources\config" />
+      <recent name="F:\毕设\Android\AndriodServer\src\main\resources\mapper\login" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\毕设\Android\AndriodServer\src\main\resources\mapper" />
+      <recent name="F:\毕设\Android\AndriodServer\src\main\java\cn\gq\android\web\entity" />
+      <recent name="F:\毕设\Android\AndriodServer\src\main\resources" />
+      <recent name="F:\毕设\Android\AndriodServer\src\main\java\cn\gq\android\core\commexception" />
+      <recent name="F:\毕设\Android\AndriodServer\src\main\java\cn\gq\android\core\config\shiro" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.gq.android.web.utils" />
+      <recent name="cn.gq.android.core.config" />
+      <recent name="cn.gq.android.core.exceptionHandler" />
+      <recent name="cn.gq.android.core.content" />
+      <recent name="cn.gq.android.core.config.shiro" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.gq.android.web.dao.student" />
+      <recent name="cn.gq.android.web.service.student" />
+      <recent name="cn.gq.android.web.dao.coursetable" />
+      <recent name="cn.gq.android.web.service.coursetable" />
+      <recent name="cn.gq.android.web.dao.opencourse" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.StartAndroidServer">
+    <configuration name="StudentServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gq.android.web.service.impl.student.StudentServiceImpl" />
+      <module name="AndriodServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartAndroidServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="AndriodServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gq.android.StartAndroidServer" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartAndroidServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="AndriodServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gq.android.StartAndroidServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.StartAndroidServer" />
+        <item itemvalue="Application.StudentServiceImpl" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpringBeansView">
+    <option name="showFilesets" value="false" />
+    <option name="showImplicitBeans" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\DELL\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/core/config/shiro/StatelessRealm.java</url>
+          <line>111</line>
+          <properties class="cn.gq.android.core.config.shiro.StatelessRealm" method="doGetAuthorizationInfo">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/web/utils/HeaderUtil.java</url>
+          <line>61</line>
+          <properties class="cn.gq.android.web.utils.HeaderUtil" method="createFailureAlert">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/core/exceptionHandler/ExceptionAspect.java</url>
+          <line>110</line>
+          <properties class="cn.gq.android.core.exceptionHandler.ExceptionAspect" method="handleUnauthenticatedException">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/core/exceptionHandler/ExceptionAspect.java</url>
+          <line>98</line>
+          <properties class="cn.gq.android.core.exceptionHandler.ExceptionAspect" method="handleForbiddenException">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/core/exceptionHandler/ExceptionAspect.java</url>
+          <line>148</line>
+          <properties class="cn.gq.android.core.exceptionHandler.ExceptionAspect" method="handleException">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/web/service/impl/icon/IconServiceImpl.java</url>
+          <line>30</line>
+          <properties class="cn.gq.android.web.service.impl.icon.IconServiceImpl" method="getIconByRole" />
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/web/controller/yuanxiguanli/YuanXiGaunLiController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AndriodServer/src/main/java/cn/gq/android/web/controller/teacher/TeacherController.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.banji.BanJiMapper">
+
+    <insert id="addBanJi">
+       INSERT INTO class (cname,majorid,collegeid) values
+       <foreach collection="banJi.banjis" separator="," item="item">
+           (#{item},#{banJi.mid},#{banJi.cid})
+       </foreach>
+    </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

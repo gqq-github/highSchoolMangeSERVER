@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.course.CourseMapper">
+
+    <insert id="addCourseMapper">
+        INSERT INTO course (cid,cname,ccredit,cdetail,starttime)
+          values (#{courseId},#{courseName},#{courseCredit},#{courseDetail},#{courseData})
+          <selectKey>
+              select count (cid) from course where cid=#{courseId}
+          </selectKey>
+    </insert>
+    <select id="selectCourseById" resultType="java.util.Map">
+         SELECT cid,cname,ccredit,cdetail,starttime from
+         course where cid = #{id}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

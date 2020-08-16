@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.student.StudentSignInMapper">
+	<insert id="createStudentSignIn">
+		INSERT INTO student_signin (signinid,studentid,signintime)
+		values (#{signInId},#{studentId},#{signInTime})
+	</insert>
+
+	<update id="updateStudentSignIn">
+		UPDATE  student_signin t1 SET t1.tip = t1.tip+1 , t1.signintime = #{signInTime}
+		WhERE  t1.id = #{id}
+	</update>
+	<!--通过课程相关的信息 以及用户自己的班级来获取签到信息-->
+	<select id="findTeacherSignInByCourse" resultType="java.util.Map">
+	SELECT
+	t1.id,
+	t1.endtime AS endTime,
+	t1.verifed,
+	t1.keeptime AS keepTime
+FROM
+	teacher_signin t1
+WHERE
+	t1.courseid = #{entity.courseId}
+
+	AND t1.majorid = #{entity.majorId}
+
+	AND t1.teacherid = #{entity.teacherId}
+	AND t1.classname = (SELECT t2.cname  FROM student t1 INNER JOIN class t2 on t1.classId = t2.cid
+	 WHERE t1.sid = #{userId}
+	 )
+	</select>
+
+	<select id="findStudentSignInBySignInId" resultType="java.util.Map">
+         SELECT
+          t1.id ,
+          t1.signintime as signInTime
+          FROM student_signin t1
+          WHERE
+          t1.signinid = #{signInId} AND t1.studentid = #{userId}
+          <if test="startTime != null">
+          AND
+          t1.signintime  > #{startTime}
+		  </if>
+
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

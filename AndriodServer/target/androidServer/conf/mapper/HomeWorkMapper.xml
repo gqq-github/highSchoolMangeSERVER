@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.homework.HomeWorkMapper">
+
+
+    <insert id="saveHomeWork">
+        INSERT INTO teacher_send_homework (teacherid,courseid,coursename,
+        question,coursetime,coursesendtime,classname,majorid,majorname,credit)
+        values (#{teacherId},#{courseId},#{courseName},#{question},#{courseTime},
+        #{courseSendTime},#{className},#{majorId},#{majorName},#{credit})
+    </insert>
+     <!--根据学生的Id来查询出学生作业信息-->
+	<select id="showHomeWorkToStudent" resultType="java.util.Map">
+    SELECT
+	t1.id,
+	t1.teacherid AS teacherId,
+	t2.tname AS teacherName,
+	t1.courseid AS courseId,
+	t1.coursename AS courseName,
+	t1.question AS question,
+	t1.coursesendtime AS courseSendTime,
+	t1.classname AS className,
+	t1.majorid AS majorId,
+	t1.majorname AS majorName,
+	t1.credit,
+	case WHEN t1.id in (SELECT t1.tshid FROM student_homework_1 t1  WHERE t1.studentid = 'sadmin' )
+	 then '1'
+	 else
+	  '0'
+		END  AS 'show'
+    FROM
+	teacher_send_homework t1
+	LEFT JOIN teacher t2 ON t1.teacherid = t2.tid
+    WHERE
+	t1.courseid IN (
+	SELECT
+		t1.courseid
+	FROM
+		course_major_teacher t1
+		INNER JOIN student t2 ON t1.majorid = t2.majorid
+		AND t2.sid = #{studentId}
+		AND coursetype != 0
+	WHERE
+		t1.del = 1 UNION
+	SELECT
+		t1.courseid
+	FROM
+		student_course t1
+	WHERE
+		t1.del = 1
+		AND t1.studentid = #{studentId}
+	)
+	AND t1.classname = ( SELECT t2.cname FROM student t1 INNER JOIN class t2 ON t1.classid = t2.cid WHERE t1.sid = #{studentId} )
+
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

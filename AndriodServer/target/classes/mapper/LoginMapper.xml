@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.login.LoginMapper">
+<!--    private String userId ;-->
+<!--    private String passWord;-->
+<!--    private Date upDate ;-->
+<!--    private Date creatDate;-->
+    <insert id="addLoginUser">
+     INSERT INTO login (userid,`password`,updata,createdata,roleid)
+     VALUES
+      (#{userId},#{passWord},#{upDate},#{creatDate},#{role});
+      <selectKey resultType="integer">
+          select count (userid) from login where userid=#{userId}
+      </selectKey>
+    </insert>
+
+<!--  根据角色id来查询角色对应的权限 -->
+    <select id="getRolePermByRole" resultType="java.util.Map">
+     SELECT
+	t1.rolecode as 'role',
+	t2.permcode as 'perm',
+	t2.userid as 'extuser'
+FROM
+	role t1
+	LEFT JOIN user_role_perm t2 ON t1.rolecode = t2.rolecode
+WHERE
+	t1.id = #{role}
+	AND t2.`status` = 0
+    </select>
+
+
+    <select id="getUserByUserId" resultType="java.util.Map">
+        		SELECT `password`,roleid FROM  login  WHERE
+        		userId = #{userId} AND status = 0
+    </select>
+
+    <select id="getUserInfo" resultType="java.util.Map">
+        select * from
+        <if test='role eq 0'>
+          manger t1 WHERE t1.mid = '${userId}'
+        </if>
+        <if test='role eq 1'>
+            teacher t1 WHERE t1.tid = '${userId}'
+        </if>
+        <if test='role eq 2'>
+            student t1 WHERE t1.sid = '${userId}'
+        </if>
+
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

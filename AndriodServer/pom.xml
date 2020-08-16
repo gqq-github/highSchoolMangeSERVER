@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.gq.android</groupId>
+    <artifactId>andriod</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <app.name>androidServer</app.name>
+        <springfox.version>2.7.0</springfox.version>
+        <apache.shiro>1.3.2</apache.shiro>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <jjwt.version>0.7.0</jjwt.version>
+<!--        <commons-fileupload.version>1.3.1</commons-fileupload.version>-->
+        <commons-beanutils.version>1.9.1</commons-beanutils.version>
+        <asciidoctor.input.directory>${project.basedir}/src/docs/asciidoc</asciidoctor.input.directory>
+        <swagger.output.dir>${project.build.directory}/swagger</swagger.output.dir>
+        <swagger.snippetOutput.dir>${project.build.directory}/asciidoc/snippets</swagger.snippetOutput.dir>
+        <generated.asciidoc.directory>${project.build.directory}/asciidoc/generated</generated.asciidoc.directory>
+        <asciidoctor.html.output.directory>${project.build.directory}/asciidoc/html</asciidoctor.html.output.directory>
+        <asciidoctor.pdf.output.directory>${project.build.directory}/asciidoc/pdf</asciidoctor.pdf.output.directory>
+        <swagger.input>${swagger.output.dir}/swagger.json</swagger.input>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.8.RELEASE</version>
+    </parent>
+
+    <!-- Add typical dependencies for a web application -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!--mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+<!--        &lt;!&ndash;mapper &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>tk.mybatis</groupId>-->
+<!--            <artifactId>mapper-spring-boot-starter</artifactId>-->
+<!--            <version>1.1.7</version>-->
+<!--        </dependency>-->
+        <!--pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 集成 swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+        <!-- thmleaf模板依赖. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.44</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--整合shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${apache.shiro}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${apache.shiro}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${apache.shiro}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${apache.shiro}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+        <!-- GENERAL UTILS begin -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--整合shiro-->
+        <!-- JWT：Json Web Token 配置 用于请求身份验证 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+    </dependencies>
+    <!--该插件能够将Spring boot 打包为Jar-->
+    <build>
+    <plugins>
+    <!-- mvn clean package appassembler:assemble-->
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>
+            appassembler-maven-plugin</artifactId>
+        <version>2.0.0</version>
+        <configuration>
+            <!-- 生成linux, windows两种平台的执行脚本 -->
+            <platforms>
+                <platform>windows</platform>
+                <platform>unix</platform>
+            </platforms>
+            <!-- 根目录 -->
+            <assembleDirectory>${project.build.directory}/${app.name}</assembleDirectory>
+            <!-- 打包的jar，以及maven依赖的jar放到这个目录里面 -->
+            <repositoryName>lib</repositoryName>
+            <!-- 可执行脚本的目录 -->
+            <binFolder>bin</binFolder>
+            <!-- 配置文件的目标目录 -->
+            <configurationDirectory>conf</configurationDirectory>
+            <!-- 拷贝配置文件到上面的目录中 -->
+            <copyConfigurationDirectory>true</copyConfigurationDirectory>
+            <!-- 从哪里拷贝配置文件 (默认src/main/config) -->
+            <configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
+            <!-- lib目录中jar的存放规则，默认是${groupId}/${artifactId}的目录格式，flat表示直接把jar放到lib目录 -->
+            <repositoryLayout>flat</repositoryLayout>
+            <encoding>UTF-8</encoding>
+            <logsDirectory>logs</logsDirectory>
+            <tempDirectory>tmp</tempDirectory>
+            <programs>
+                <program>
+                    <id>${app.name}</id>>
+                    <!-- 启动类 -->
+                    <mainClass>cn.gq.android.StartAndroidServer</mainClass>
+                    <jvmSettings>
+                        <extraArguments>
+                            <extraArgument>-server</extraArgument>
+                            <extraArgument>-Xmx1G</extraArgument>
+                            <extraArgument>-Xms1G</extraArgument>
+                        </extraArguments>
+                    </jvmSettings>
+                </program>
+            </programs>
+        </configuration>
+    </plugin>
+
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+            <excludes>
+                <exclude>**/*.properties</exclude>
+                <exclude>mapper/*.xml</exclude>
+            </excludes>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
+</project>

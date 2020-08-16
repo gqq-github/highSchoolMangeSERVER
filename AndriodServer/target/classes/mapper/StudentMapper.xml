@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.student.StudentMapper">
+    <insert id="saveSelectCourse">
+        INSERT  INTO student_course (courseid,coursename,teacherid,teachername,coursecredit,studentid)
+        values  (#{studentCourseEntity.courseId},#{studentCourseEntity.courseName},#{studentCourseEntity.teacherId},#{studentCourseEntity.teacherName},#{studentCourseEntity.courseCredit},#{userId})
+    </insert>
+
+    <insert id="addHomework">
+		INSERT INTO student_homework  (studentid,tshid,homeworkpicture)
+		values  (#{studentId},#{tshId},#{image})
+	</insert>
+
+<!--	实现URL来保存图片-->
+    <insert id="addHomework_1">
+		INSERT INTO student_homework_1  (studentid,tshid,homeworkpicture)
+		values  (#{studentId},#{tshId},#{fileUrl})
+	</insert>
+
+    <update id="updateStudentInfo">
+      UPDATE student set collegeid = #{collegeId} , majorid = #{majorId},
+      classid = #{classId} WHERE sid  = #{studentId}
+    </update>
+
+
+    <update id="deleteCourse">
+        UPDATE student_course set del = 0
+        where  id = #{id}
+    </update>
+
+    <select id="selectStudentCourse" resultType="java.util.Map">
+     SELECT
+     -1 AS Id ,
+	t3.cname AS collegeName,
+	t2.mid AS majorId ,
+	t2.mname AS majorName,
+	t6.cname AS courseName,
+	t4.coursetype AS courseType,
+	t6.ccredit AS courseCredit,
+	t5.tname AS teacherName,
+	t4.teacherid AS teacherId ,
+	t4.courseid AS courseId,
+	0 AS "show"
+FROM
+	student t1
+	INNER JOIN major t2 ON t1.majorid = t2.mid
+	INNER JOIN college t3 ON t1.collegeid = t3.cid
+	INNER JOIN course_major_teacher t4 ON t3.cid = t4.collegeid
+	AND t2.mid = t4.majorid
+	AND t4.coursetype != 0
+	LEFT JOIN course t6 ON t6.cid = t4.courseid
+	LEFT JOIN teacher t5 ON t5.tid = t4.teacherid
+WHERE
+	t1.sid = #{header} UNION ALL
+SELECT
+    t1.id as Id,
+	t2.cname AS collegeName,
+	t3.mid AS majorId ,
+	t3.mname AS majorName,
+	t1.coursename AS courseName,
+	t1.coursetype AS courseType,
+	t1.coursecredit AS courseCredit,
+	t1.teachername AS teacherName,
+	t1.teacherid AS teacherId,
+	t1.courseid AS courseId,
+	1 AS "show"
+    FROM
+	student_course t1
+	INNER JOIN student t4 ON t4.sid = t1.studentid
+	INNER JOIN college t2 ON t4.collegeid = t2.cid
+	INNER JOIN major t3 ON t3.mid = t4.majorid
+  WHERE
+	t1.studentid = #{header} AND t1.del = 1
+    </select>
+
+    <select id="selectStudentCloudeSelectCourse" resultType="java.util.Map">
+    SELECT
+	t3.cid AS collegeId,
+	t3.cname AS collegeName,
+	t2.mid AS majorId,
+	t2.mname AS majorName,
+	t5.cname AS courseName,
+	t5.cid AS courseId,
+	t5.ccredit AS courseCredit,
+	t1.coursetype AS courseType,
+	t4.tid AS teacherId,
+	t4.tname AS teacherName
+FROM
+	course_major_teacher t1
+	INNER JOIN major t2 ON t2.mid = t1.majorid
+	AND t1.coursetype = 0
+	INNER JOIN college t3 ON t3.cid = t1.collegeid
+	LEFT JOIN course t5 ON t5.cid = t1.courseid
+	INNER JOIN teacher t4 ON t4.tid = t1.teacherid
+WHERE
+	t1.courseid NOT IN (
+	SELECT
+		a.courseid
+	FROM
+		student_course a
+	WHERE
+		a.studentid = #{userId}
+	AND a.del = 1)
+
+    </select>
+
+
+    <select id="showStudentCourseTable" resultType="java.util.Map">
+    SELECT
+	t1.courseid,
+	t1.start,
+	t1.end,
+	t1.doubleweek,
+	t1.classroom,
+	t1.majorid,
+	t1.coursename,
+	t1.majorname,
+	t1.cmtid,
+	t1.teachername,
+	t1.coursetype,
+	t1.classname,
+	t1.day
+    FROM
+	course_table t1
+    WHERE
+	del = 0
+	AND classname = (SELECT  t2.cname FROM student t1 LEFT JOIN class t2 on t1.classid = t2.cid WHERE t1.sid = #{userId})
+	AND courseid in ((SELECT t1.courseid FROM course_major_teacher t1  INNER JOIN
+    student t2 ON t1.majorid = t2.majorid AND t2.sid = #{userId} AND coursetype!=0
+    WHERE t1.del = 1
+    UNION
+    SELECT t1.courseid FROM student_course t1 WHERE t1.del = 1 and t1.studentid = #{userId}))
+    </select>
+
+
+    <!--查询已经批改的作业-->
+    <select id="selectSawHomework" resultType="java.util.Map">
+    SELECT
+	t2.question,
+	t2.coursename as courseName,
+	t1.teacherpicture as teacherPicture,
+	t1.credit
+    FROM
+	student_homework t1
+	INNER JOIN teacher_send_homework t2 ON t1.tshid = t2.id
+    WHERE
+	t1.teacherpicture IS NOT NULL AND t1.studentid = #{studentId}
+	</select>
+	<select id="showStudentHomeWorkPipe" resultType="java.util.Map">
+		SELECT
+		count(*) AS "count",
+		a.temp
+		FROM
+		(
+		SELECT
+		CASE
+		WHEN
+		t1.credit &lt; 60 THEN '不及格'
+		WHEN t1.credit &gt;= 60
+		AND t1.credit &lt;= 75 THEN
+		'及格' ELSE "优秀"
+		END 'temp'
+		FROM
+		student_homework_1 t1
+		WHERE
+		t1.studentid = #{studentId}
+		) a
+		GROUP BY
+		a.temp
+	</select>
+
+
+	<select id="selectSawHomework_1" resultType="java.util.Map">
+		 SELECT
+	t2.question,
+	t2.coursename as courseName,
+	t1.teacherpicture as teacherPicture,
+	t1.credit
+    FROM
+	student_homework_1 t1
+	INNER JOIN teacher_send_homework t2 ON t1.tshid = t2.id
+    WHERE
+	t1.teacherpicture IS NOT NULL AND t1.studentid = #{studentId}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

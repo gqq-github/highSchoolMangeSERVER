@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.icon.IconMapper">
+    <insert id="saveIcon">
+        INSERT  INTO  icon (image,iconName,roleid) VALUES (
+        #{image},#{iconName},#{role}
+        )
+    </insert>
+
+
+    <select id="findIconByRoleId" resultType="java.util.Map">
+        SELECT iconName , image FROM icon where roleid = #{roleId}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

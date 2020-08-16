@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.coursetable.CourseTableMapper">
+
+    <insert id="addCourseTable">
+      INSERT INTO course_table (
+    	courseid,
+	   start,
+    end,
+ 	doubleweek,
+	classroom,
+	majorid,
+	coursename,
+	majorname,
+	cmtid,
+	teachername,
+	coursetype,
+	classname,
+	day 
+)
+ VALUES (
+ #{courseId},
+ #{ start},
+#{ end},
+#{ doubleWeek},
+#{classRoom },
+#{ majorId },
+#{courseName },
+#{majorName },
+#{cmtId},
+#{teacherName },
+#{ courseType },
+#{className },
+#{day})
+    </insert>
+	<update id="updateCourseTable">
+		UPDATE  course_table set del = 1 where
+		courseid = #{courseId} AND start = #{start} and end = #{end}
+		AND day = #{day} AND cmtid = #{cmtId} AND className = #{className}
+	</update>
+	<select id="selectCourseTableByClassName" resultType="java.util.Map">
+SELECT
+	courseid,
+	start,
+	end,
+	doubleweek,
+	classroom,
+	majorid,
+	coursename,
+	majorname,
+	cmtid,
+	teachername,
+	coursetype,
+	classname,
+	day
+FROM
+	course_table
+WHERE
+	del = 0
+	AND classname = #{query};
+	</select>
+</mapper>
+
+

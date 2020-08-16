@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.teacher.TeacherSignInMapper">
+
+    <!--将新建的表的Id返回用来查询签到-->
+    <insert id="createTeacherSignIn" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO  teacher_signin (majorid,coursename,endtime,verifed,keeptime,teacherid,tip,courseid,classname)
+        values  (#{majorId},#{courseName},#{endTime},#{verifed},#{keepTime},#{teacherId},1,#{courseId},#{className})
+    </insert>
+
+    <update id="updateById">
+        UPDATE teacher_signin t1 set t1.endtime = #{endTime} , t1.tip = t1.tip+1 , t1.verifed = #{verifed}
+        ,t1.keeptime = #{keepTime}
+        WHERE t1.id = #{id}
+    </update>
+
+    <select id="findByEntity" resultType="java.lang.Integer">
+      SELECT
+	    t1.id
+      FROM
+	 teacher_signin t1
+    WHERE
+	t1.courseid = #{courseId}
+	AND t1.majorid = #{majorId}
+	AND t1.teacherid = #{teacherId}
+	AND t1.classname = #{className}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

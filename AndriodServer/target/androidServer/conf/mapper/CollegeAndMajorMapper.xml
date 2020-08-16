@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.collegeandmajors.CollegeAndMajorMapper">
+    <!--插入学院和专业-->
+    <insert id="addCollege" useGeneratedKeys="true" keyProperty="cid">
+        INSERT INTO college(cname)values (#{cname}) ;
+    </insert>
+
+    <insert id="addMajors">
+        INSERT INTO major (mname,collegeid)values
+        <foreach collection="majors" separator="," item="major">
+            (#{major.mname},#{major.collegeId})
+        </foreach>
+    </insert>
+    <select id="getCollegeAndMajor" resultType="java.util.Map">
+    SELECT
+	t.mid,
+	t.mname,
+	t1.cid,
+	t1.cname
+FROM
+	major t
+	INNER JOIN college t1 ON t.collegeid = t1.cid
+    </select>
+
+    <select id="getColleges" resultType="java.util.Map">
+      SELECT cid,cname,cdetail,master from college;
+    </select>
+
+    <select id="getALLInfo" resultType="java.util.Map">
+    SELECT
+	t1.cid AS collegeId,
+	t1.cname AS collegeName,
+	t2.mid AS majorId,
+	t2.mname AS majorName,
+	t3.cname AS className,
+	t3.cid AS classId
+    FROM
+	college t1
+	INNER JOIN major t2 ON t2.collegeid = t1.cid
+	INNER JOIN class t3 ON t3.majorid = t2.mid
+	ORDER BY t1.cid
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

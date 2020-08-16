@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gq.android.web.dao.opencourse.OpenCourseMapper">
+
+    <insert id="addOpenCourseMapper">
+
+
+        INSERT  INTO course_major_teacher (collegeid,majorid,courseid,coursetype)
+        values (#{collegeId},#{majorId},#{courseId},#{courseType})
+    </insert>
+    <select id="findOpenCourseMajorAndCourse" resultType="java.util.Map">
+    SELECT
+	t1.id AS cmtid,
+	t2.mname,
+	t1.majorid,
+	t1.coursetype ,
+	t3.cname,
+	t3.cid AS courseid,
+	t4.tname AS teachername
+FROM
+	course_major_teacher t1
+	INNER JOIN major t2 ON t1.majorid = t2.mid
+	LEFT JOIN course t3 ON t1.courseid = t3.cid
+	LEFT JOIN teacher t4 ON t4.tid = t1.teacherid
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
